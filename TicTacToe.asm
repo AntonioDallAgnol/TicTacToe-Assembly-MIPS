@@ -90,7 +90,7 @@ while_codigo: #basicamente, a "main".
 	jal 		tabuleiroPrint #sempre printar o tabuleiro a cada jogada
 	jal 		vez_do_computador #vez do pc
 	jal 		verificar_vitoria #se o jogador ganhou, dar um j para o fim do programa e printar a mensagem de vitoria do jogador e o tabuleiro final
-	j  		while_inicio #faz o while começar de novo
+	j  		while_inicio #faz o while comeÃ§ar de novo
 
 while_testa_condicao:
 	sw 		$s0, acabou #guardar o valor da variavel acabou
@@ -122,14 +122,14 @@ while_linhas:
 	lb 		$t4, tabuleiro($t1) # carrega primeiro valor do tabuleiro
 	lb 		$t5, tabuleiro($t2) # carrega segundo valor do tabuleiro
 	lb 		$t6, tabuleiro($t3) # carrega terceiro valor do tabuleiro
-	beq 		$t4, $t5, comparar_linhas #se os dois forem iguais vai pra outra funçao de comparar
+	beq 		$t4, $t5, comparar_linhas #se os dois forem iguais vai pra outra funÃ§ao de comparar
 	
 adicionar_linhas:
 	addiu 	$t1, $t1, 3 #soma o indice em 3 pra ir pra proxima linha
 	addiu	$t2, $t2, 3 #soma o indice em 3 pra ir pra proxima linha
 	addiu 	$t3, $t3, 3 #soma o indice em 3 pra ir pra proxima linha
 	
-	j 		while_linhas #recomeça o loop
+	j 		while_linhas #recomeÃ§a o loop
 	
 comparar_linhas:
 	beq 		$t4, $s1, adicionar_linhas
@@ -140,7 +140,7 @@ comparar_linhas:
 	addiu 	$t2, $t2, 3 #soma o indice em 3 pra ir pra proxima linha
 	addiu 	$t3, $t3, 3 #soma o indice em 3 pra ir pra proxima linha
 	
-	j		while_linhas #recomeça o loop
+	j		while_linhas #recomeÃ§a o loop
 	
 acabar:
 	beq 		$t4, -1, vitoria_humano #se for igual a 1 jogador ganhou
@@ -148,11 +148,11 @@ acabar:
 	
 vitoria_humano:
 	jal 		tabuleiroPrint
-	j 		printar_vitoria_jogador #pula para funçao de vitoria do jogador
+	j 		printar_vitoria_jogador #pula para funÃ§ao de vitoria do jogador
 	
 vitoria_maquina:
 	jal 		tabuleiroPrint
-	j 		printar_vitoria_computador #pula para funçao de vitoria do computador
+	j 		printar_vitoria_computador #pula para funÃ§ao de vitoria do computador
 	
 verificar_colunas:
 	li 		$t1, 0 #indice 1
@@ -166,14 +166,14 @@ while_colunas:
 	lb 		$t4, tabuleiro($t1) # carrega primeiro valor do tabuleiro
 	lb 		$t5, tabuleiro($t2) # carrega segundo valor do tabuleiro
 	lb 		$t6, tabuleiro($t3) # carrega terceiro valor do tabuleiro
-	beq 		$t4, $t5, comparar_colunas #se os dois forem iguais vai pra outra funçao de comparar
+	beq 		$t4, $t5, comparar_colunas #se os dois forem iguais vai pra outra funÃ§ao de comparar
 	
 adicionar_colunas:
 	addiu 	$t1, $t1, 1 #soma o indice em 1 pra ir pra proxima coluna
 	addiu 	$t2, $t2, 1 #soma o indice em 1 pra ir pra proxima coluna
 	addiu 	$t3, $t3, 1 #soma o indice em 1 pra ir pra proxima coluna
 	
-	j 		while_colunas #recomeça o loop
+	j 		while_colunas #recomeÃ§a o loop
 		
 comparar_colunas:
 	beq 		$t4, $s1, adicionar_colunas
@@ -183,7 +183,7 @@ comparar_colunas:
 	addiu 	$t1, $t1, 1 #soma o indice em 1 pra ir pra proxima coluna
 	addiu 	$t2, $t2, 1 #soma o indice em 1 pra ir pra proxima coluna
 	addiu 	$t3, $t3, 1 #soma o indice em 1 pra ir pra proxima coluna
-	j 		while_colunas #recomeça o loop
+	j 		while_colunas #recomeÃ§a o loop
 		
 verificar_diagonal_principal:
 	li 		$s2, 0 #indice 1
@@ -238,7 +238,7 @@ vez_do_jogador:
          syscall                     
       
          move 	$s1, $v0  #mover a leitura para a variavel posicao
-         la   		$t0, posicao    # $t0 <- endereÃ§o da variavel posicao
+         la   		$t0, posicao    # $t0 <- endereÃƒÂ§o da variavel posicao
          sw    	$s1, 0($t0)       # guardar a posicao lida
          
          lw 		$t0, posicao
@@ -576,5 +576,5 @@ endtudo: #acabou
          beq 	$t0, $t1, main
          
          li          	$a0, 0                  # retornamo o valor 0: programa executado com sucesso
-         li          	$v0, 17                 # serviÃ§o 17, termina o programa
+         li          	$v0, 17                 # serviÃƒÂ§o 17, termina o programa
          syscall
